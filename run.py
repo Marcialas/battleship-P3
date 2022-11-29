@@ -2,20 +2,27 @@ import random
 
 #global variables
 GRID = 5
-USER_BOARD =[]
-COMP_BOARD = []
+USER_BOARD = [[' '] * GRID for i in range(GRID)]
+COMP_BOARD = [[' '] * GRID for i in range(GRID)]
 USER_GUESS_BOARD = []
 COMP_GUESS_BOARD = []
 TRANSLATE_LETTERS_TO_NUMBERS = {'A':0, 'B':1, 'C':2, 'D':3, 'E':4, 'F':5, 'G':6, 'H':7}
 
-def print_board():
+def print_board(board):
     '''print board function'''
-    pass
+    print(' A B C D E F G H ')
+    print(' =================')
+    row_number = 1
+    for row in board:
+        print('%d|%s|' % (row_number, '|'.join(row)))
+        row_number += 1
+    print(' =================')
+print_board(COMP_BOARD)
 
-
-def place_ships():
-    '''place ships on the board'''
-    pass
+# def place_ships(board):
+#     '''place ships on the board'''
+#     while:
+#         if 
 
 
 def user_input():
