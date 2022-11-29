@@ -35,11 +35,12 @@ def user_input():
     row = input('Please enter your shot row (1-8): ')
     while row not in '12345678':
         print('Please enter a valid row (1-8) ')
-        row = input('Please enter your shot row (1-8): ').upper()
-    col = input('Please enter your shot column (A-H): ')
+        row = input('Please enter your shot row (1-8): ')
+    col = input('Please enter your shot column (A-H): ').upper()
     while col not in 'ABCDEFGH':
         print('Please enter a valid column (A-H')
-
+        col = input('Please enter your shot column (A-H): ').upper()
+    return int(row) - 1, TRANSLATE_LETTERS_TO_NUMBERS[col]
 
 def ships_hit():
     '''count ships hit'''
