@@ -32,8 +32,13 @@ def place_ships(board):
 
 def user_input():
     '''get users shot input'''
-    row = input('Please enter a shot row (1-8): ' )
-    col = input('Please enter a shot row (A-H): ' )
+    row = input('Please enter your shot row (1-8): ')
+    while row not in '12345678':
+        print('Please enter a valid row (1-8) ')
+        row = input('Please enter your shot row (1-8): ').upper()
+    col = input('Please enter your shot column (A-H): ')
+    while col not in 'ABCDEFGH':
+        print('Please enter a valid column (A-H')
 
 
 def ships_hit():
@@ -41,6 +46,6 @@ def ships_hit():
     pass
 
 
-place_ships(USER_BOARD)
+user_input()
 
 
