@@ -29,9 +29,11 @@ def place_ships(board):
             ship_row, ship_col = random.randint(0, GRID), random.randint(0, GRID)
         board[ship_row][ship_col] = 'O'
 
+
 def user_input():
-    '''get user input'''
-    pass
+    '''get users shot input'''
+    row = input('Please enter a shot row (1-8): ' )
+    col = input('Please enter a shot row (A-H): ' )
 
 
 def ships_hit():
