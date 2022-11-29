@@ -3,10 +3,10 @@ import random
 
 #global variables
 GRID = 8
-USER_BOARD = [[' '] * GRID for i in range(GRID)]
-COMP_BOARD = [[' '] * GRID for i in range(GRID)]
-USER_GUESS_BOARD = []
-COMP_GUESS_BOARD = []
+USER_BOARD = [[' '] * 8 for i in range(8)]
+COMP_BOARD = [[' '] * 8 for i in range(8)]
+USER_GUESS_BOARD = [[' '] * 8 for i in range(8)]
+COMP_GUESS_BOARD = [[' '] * 8 for i in range(8)]
 TRANSLATE_LETTERS_TO_NUMBERS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
 
 
@@ -19,15 +19,14 @@ def print_board(board):
         print('%d|%s|' % (row_number, '|'.join(row)))
         row_number += 1
     print(' =================')
-print_board(COMP_BOARD)
 
 
 def place_ships(board):
     '''place ships on the board'''
     for ship in range(5):
-        ship_row, ship_col = random.randint(0, GRID), random.randint(0, GRID)
+        ship_row, ship_col = random.randint(0, 7), random.randint(0, 7)
         while board[ship_row][ship_col] == 'O':
-            ship_row, ship_col = random.randint(0, GRID), random.randint(0, GRID)
+            ship_row, ship_col = user_input()
         board[ship_row][ship_col] = 'O'
 
 
@@ -53,7 +52,10 @@ def ships_hit(board):
                 ships += 1
 
 
+def main():
+    place_ships(USER_BOARD)
+    place_ships(COMP_BOARD)
+    print_board(USER_GUESS_BOARD)
 
-user_input()
-ships_hit(USER_GUESS_BOARD)
 
+main()
