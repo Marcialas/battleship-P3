@@ -1,13 +1,16 @@
 import random
 
 
-#global variables
+# global variables
+
 GRID = 8
 USER_BOARD = [[' '] * 8 for i in range(8)]
 COMP_BOARD = [[' '] * 8 for i in range(8)]
 USER_GUESS_BOARD = [[' '] * 8 for i in range(8)]
 COMP_GUESS_BOARD = [[' '] * 8 for i in range(8)]
-TRANSLATE_LETTERS_TO_NUMBERS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
+TRANSLATE_LETTERS_TO_NUMBERS = {
+    'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7
+    }
 
 
 def print_board(board):
@@ -50,12 +53,16 @@ def ships_hit(board):
         for col in row:
             if col == 'X':
                 ships += 1
-
+    return ships
 
 def main():
+    print('WELCOME TO THE CLASSIC GAME OF BATTLESHIPS!!!')
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
     print_board(USER_GUESS_BOARD)
+    print_board(COMP_GUESS_BOARD)
 
 
-main()
+
+if __name__ == '__main__':
+    main()
