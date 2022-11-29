@@ -9,9 +9,10 @@ USER_GUESS_BOARD = []
 COMP_GUESS_BOARD = []
 TRANSLATE_LETTERS_TO_NUMBERS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
 
+
 def print_board(board):
     '''print board function'''
-    print(' A B C D E F G H ')
+    print('  A B C D E F G H ')
     print(' =================')
     row_number = 1
     for row in board:
@@ -42,11 +43,17 @@ def user_input():
         col = input('Please enter your shot column (A-H): ').upper()
     return int(row) - 1, TRANSLATE_LETTERS_TO_NUMBERS[col]
 
-def ships_hit():
+
+def ships_hit(board):
     '''count ships hit'''
-    pass
+    ships = 0
+    for row in board:
+        for col in row:
+            if col == 'X':
+                ships += 1
+
 
 
 user_input()
-
+ships_hit(USER_GUESS_BOARD)
 
