@@ -19,11 +19,11 @@ def print_board(board):
     print(' =================')
 print_board(COMP_BOARD)
 
-# def place_ships(board):
-#     '''place ships on the board'''
-#     while:
-#         if 
-
+def place_ships(board):
+    '''place ships on the board'''
+    for ship in range(5):
+        ship_row, ship_col = randint(0, 7), randint(0, 7)
+    board[ship_row][ship_col] = 'O'
 
 def user_input():
     '''get user input'''
