@@ -56,20 +56,28 @@ def ships_hit(board):
     return ships
 
 def main():
+    '''main game function'''
     print('=============================================')
     print('WELCOME TO THE CLASSIC GAME OF BATTLESHIPS!!!')
     print('=============================================')
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
-    while ships_hit(USER_BOARD) < 5:
+    while ships_hit(USER_BOARD) or ships_hit(COMP_BOARD) < 5:
         print_board(USER_BOARD)
         print_board(COMP_BOARD)
+        print_board(USER_GUESS_BOARD)
+        print_board(COMP_GUESS_BOARD)
         row, col = user_input()
-        if USER_GUESS_BOARD[row][col] == '#':
-            print('Shot already has been fired at this location')
-        elif USER_GUESS_BOARD[row][col] == 'O':
+        if COMP_BOARD[row][col] == 'O':
             print('You have hit an enemy ship!!!')
-            USER_GUESS_BOARD[row][col].append('X')
+            USER_GUESS_BOARD[row][col] = 'X'
+        elif USER_GUESS_BOARD[row][col] == ' ':
+            print('You missed!!!')
+            USER_GUESS_BOARD[row][col] = '#'
+        elif USER_GUESS_BOARD[row][col] == '#':
+            print('Shot already has been fired at this location')
+        
+        
 
 
 
