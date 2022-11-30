@@ -59,7 +59,13 @@ def ships_hit(board):
 def generate_comp_shot(board):
     '''create computers shot'''
     shot_row, shot_col = random.randint(0, 7), random.randint(0, 7)
-    return shot_row, shot_col
+    if board[shot_row][shot_col] == 'O':
+        board[shot_row][shot_col] = 'X'
+        print('Enemy has hit our ship!!!')
+    elif board[shot_row][shot_col] == ' ':
+        board[shot_row][shot_col] = '#'
+        print('Enemy has missed!!!')
+    
 
 
 def main():
@@ -69,7 +75,8 @@ def main():
     print('=============================================')
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
-    while ships_hit(USER_GUESS_BOARD) or ships_hit(COMP_GUESS_BOARD) < 5:
+    comp_shot = generate_comp_shot(board)
+    while True:
         print_board(USER_BOARD)
         print_board(COMP_BOARD)
         print_board(USER_GUESS_BOARD)
@@ -85,13 +92,13 @@ def main():
             print('Shot already has been fired at this location')
         elif ships_hit(USER_GUESS_BOARD) == 5:
             print('Congrats!!! You Win!!!')
-            break
+            return False
         elif ships_hit(COMP_GUESS_BOARD) == 5:
             print('You Lose!!!')
-            break
+            return False
+
         print(ships_hit(USER_GUESS_BOARD))
-        print(generate_comp_shot(COMP_GUESS_BOARD))
-    
+
         
 
 
