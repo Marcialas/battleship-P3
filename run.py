@@ -75,7 +75,6 @@ def main():
     print('=============================================')
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
-    comp_shot = generate_comp_shot(board)
     while True:
         print_board(USER_BOARD)
         print_board(COMP_BOARD)
@@ -90,22 +89,15 @@ def main():
             USER_GUESS_BOARD[row][col] = '#'
         elif USER_GUESS_BOARD[row][col] == '#':
             print('Shot already has been fired at this location')
-        elif ships_hit(USER_GUESS_BOARD) == 5:
+        generate_comp_shot(USER_BOARD)
+        if ships_hit(USER_GUESS_BOARD) == 5:
             print('Congrats!!! You Win!!!')
-            return False
+            break
         elif ships_hit(COMP_GUESS_BOARD) == 5:
             print('You Lose!!!')
-            return False
+            break
 
         print(ships_hit(USER_GUESS_BOARD))
-
-        
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
