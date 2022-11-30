@@ -29,12 +29,12 @@ def place_ships(board):
     for ship in range(5):
         ship_row, ship_col = random.randint(0, 7), random.randint(0, 7)
         while board[ship_row][ship_col] == 'O':
-            ship_row, ship_col = user_input()
+            ship_row, ship_col = random.randint(0, 7), random.randint(0, 7)
         board[ship_row][ship_col] = 'O'
 
 
 def user_input():
-    '''get users shot input'''
+    '''get users shot location input'''
     row = input('Please enter your shot row (1-8): ')
     while row not in '12345678':
         print('Please enter a valid row (1-8) ')
@@ -56,11 +56,25 @@ def ships_hit(board):
     return ships
 
 def main():
+    print('=============================================')
     print('WELCOME TO THE CLASSIC GAME OF BATTLESHIPS!!!')
+    print('=============================================')
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
-    print_board(USER_GUESS_BOARD)
-    print_board(COMP_GUESS_BOARD)
+    while ships_hit(USER_BOARD) < 5:
+        print_board(USER_BOARD)
+        print_board(COMP_BOARD)
+        row, col = user_input()
+        if USER_GUESS_BOARD[row][col] == '#':
+            print('Shot already has been fired at this location')
+        elif USER_GUESS_BOARD[row][col] == 'O':
+            print('You have hit an enemy ship!!!')
+            USER_GUESS_BOARD[row][col].append('X')
+
+
+
+
+
 
 
 
