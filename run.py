@@ -56,6 +56,12 @@ def ships_hit(board):
     return ships
 
 
+def generate_comp_shot(board):
+    '''create computers shot'''
+    shot_row, shot_col = random.randint(0, 7), random.randint(0, 7)
+    return shot_row, shot_col
+
+
 def main():
     '''main game function'''
     print('=============================================')
@@ -84,7 +90,7 @@ def main():
             print('You Lose!!!')
             break
         print(ships_hit(USER_GUESS_BOARD))
-
+        print(generate_comp_shot(COMP_GUESS_BOARD))
     
         
 
