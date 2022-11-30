@@ -55,6 +55,7 @@ def ships_hit(board):
                 ships += 1
     return ships
 
+
 def main():
     '''main game function'''
     print('=============================================')
@@ -62,7 +63,7 @@ def main():
     print('=============================================')
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
-    while ships_hit(USER_BOARD) or ships_hit(COMP_BOARD) < 5:
+    while ships_hit(USER_GUESS_BOARD) or ships_hit(COMP_GUESS_BOARD) < 5:
         print_board(USER_BOARD)
         print_board(COMP_BOARD)
         print_board(USER_GUESS_BOARD)
@@ -76,7 +77,15 @@ def main():
             USER_GUESS_BOARD[row][col] = '#'
         elif USER_GUESS_BOARD[row][col] == '#':
             print('Shot already has been fired at this location')
-        
+        elif ships_hit(USER_GUESS_BOARD) == 5:
+            print('Congrats!!! You Win!!!')
+            break
+        elif ships_hit(COMP_GUESS_BOARD) == 5:
+            print('You Lose!!!')
+            break
+        print(ships_hit(USER_GUESS_BOARD))
+
+    
         
 
 
