@@ -1,5 +1,10 @@
 import random
 
+# Game board LEGEND
+# Marks that ship has been hit X
+# Marks that shot has missed it's target #
+# Marks a ship that has not been sunk yet O
+
 
 # global variables
 
@@ -7,7 +12,6 @@ GRID = 8
 USER_BOARD = [[' '] * 8 for i in range(8)]
 COMP_BOARD = [[' '] * 8 for i in range(8)]
 USER_GUESS_BOARD = [[' '] * 8 for i in range(8)]
-COMP_GUESS_BOARD = [[' '] * 8 for i in range(8)]
 TRANSLATE_LETTERS_TO_NUMBERS = {
     'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7
     }
@@ -72,14 +76,17 @@ def main():
     '''main game function'''
     print('=============================================')
     print('WELCOME TO THE CLASSIC GAME OF BATTLESHIPS!!!')
-    print('=============================================')
+    print('=============================================\n')
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
     while True:
+        print('\nThis is your game board with your fleet of ships')
+        print(' =================')
         print_board(USER_BOARD)
-        print_board(COMP_BOARD)
+        # print_board(COMP_BOARD)
+        print('\nThis is your enemies board that will mark your shots')
+        print(' =================')
         print_board(USER_GUESS_BOARD)
-        # print_board(COMP_GUESS_BOARD)
         row, col = user_input()
         if COMP_BOARD[row][col] == 'O':
             print('You have hit an enemy ship!!!')
@@ -89,7 +96,7 @@ def main():
         elif COMP_BOARD[row][col] == 'X':
             print('You already have sunk a shit at this location')
         elif USER_GUESS_BOARD[row][col] == ' ':
-            print('You missed!!!')
+            print('\nYou missed!!!')
             generate_comp_shot(USER_BOARD)
             USER_GUESS_BOARD[row][col] = '#'
         elif USER_GUESS_BOARD[row][col] == '#':
@@ -97,11 +104,9 @@ def main():
         if ships_hit(USER_GUESS_BOARD) == 5:
             print('All enemy ships destroyed!!! Congrats!!! You Win!!!')
             break
-        elif ships_hit(COMP_GUESS_BOARD) == 5:
+        elif ships_hit(USER_BOARD) == 5:
             print('You Lose!!!')
             break
-
-        print(ships_hit(USER_GUESS_BOARD))
 
 
 if __name__ == '__main__':
