@@ -79,19 +79,23 @@ def main():
         print_board(USER_BOARD)
         print_board(COMP_BOARD)
         print_board(USER_GUESS_BOARD)
-        print_board(COMP_GUESS_BOARD)
+        # print_board(COMP_GUESS_BOARD)
         row, col = user_input()
         if COMP_BOARD[row][col] == 'O':
             print('You have hit an enemy ship!!!')
             USER_GUESS_BOARD[row][col] = 'X'
+            COMP_BOARD[row][col] = 'X'
+            generate_comp_shot(USER_BOARD)
+        elif COMP_BOARD[row][col] == 'X':
+            print('You already have sunk a shit at this location')
         elif USER_GUESS_BOARD[row][col] == ' ':
             print('You missed!!!')
+            generate_comp_shot(USER_BOARD)
             USER_GUESS_BOARD[row][col] = '#'
         elif USER_GUESS_BOARD[row][col] == '#':
             print('Shot already has been fired at this location')
-        generate_comp_shot(USER_BOARD)
         if ships_hit(USER_GUESS_BOARD) == 5:
-            print('Congrats!!! You Win!!!')
+            print('All enemy ships destroyed!!! Congrats!!! You Win!!!')
             break
         elif ships_hit(COMP_GUESS_BOARD) == 5:
             print('You Lose!!!')
