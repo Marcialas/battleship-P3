@@ -71,6 +71,7 @@ def place_ships(board):
 #             print('error1')
 #     return int(row) - 1, TRANSLATE_LETTERS_TO_NUMBERS[col]
 
+
 def user_input():
     while True:
         try:
@@ -82,9 +83,14 @@ def user_input():
             if col not in 'ABCDEFGH':
                 print('enter valid letter')
                 continue
+            else:
+                break
             return int(row) - 1, TRANSLATE_LETTERS_TO_NUMBERS[col]
-        except ValueError():
-            print('erorrrrr')
+        except TypeError:
+            print('enter valid letter')
+            continue
+
+
         
 
 
@@ -160,3 +166,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print(user_input())

@@ -5,12 +5,14 @@ def user_input():
             if row not in '12345678':
                 print('enter valid row')
                 continue
-
             col = input('Please enter your shot column (A-H): ').upper()
             if col not in 'ABCDEFGH':
                 print('enter valid letter')
                 continue
-        except TypeError and ValueError:
-            print('erorrrrr')
-        return row, col
-user_input()
+            else:
+                break
+        except TypeError:
+            print('enter valid letter')
+            continue
+        return int(row) - 1, TRANSLATE_LETTERS_TO_NUMBERS[col]
+print(user_input())
