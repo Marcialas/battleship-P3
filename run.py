@@ -5,9 +5,12 @@ import random
 # Marks that shot has missed it's target #
 # Marks a ship that has not been sunk yet O
 
+# To Do list for future
+# Ask user for game board size
+# Code for the user to place own ships on board
+
 
 # global variables
-
 GRID = 8
 USER_BOARD = [[' '] * 8 for i in range(8)]
 COMP_BOARD = [[' '] * 8 for i in range(8)]
@@ -121,4 +124,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    print(user_input())
