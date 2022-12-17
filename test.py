@@ -12,13 +12,17 @@ import random
 
 
 # global variables
-GRID = 8
-USER_BOARD = [[' '] * 8 for i in range(8)]
-COMP_BOARD = [[' '] * 8 for i in range(8)]
-USER_GUESS_BOARD = [[' '] * 8 for i in range(8)]
+GRID = board_size()
+USER_BOARD = [[' '] * GRID for i in range(GRID)]
+COMP_BOARD = [[' '] * GRID for i in range(GRID)]
+USER_GUESS_BOARD = [[' '] * GRID for i in range(GRID)]
 TRANSLATE_LETTERS_TO_NUMBERS = {
     'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7
     }
+
+def board_size():
+    size = int(input('board size'))
+    return size
 
 
 def print_board(board):
@@ -35,9 +39,9 @@ def print_board(board):
 def place_ships(board):
     '''place ships on the board'''
     for ship in range(5):
-        ship_row, ship_col = random.randint(0, 7), random.randint(0, 7)
+        ship_row, ship_col = random.randint(0, GRID - 1), random.randint(0, GRID - 1)
         while board[ship_row][ship_col] == 'O':
-            ship_row, ship_col = random.randint(0, 7), random.randint(0, 7)
+            ship_row, ship_col = random.randint(0, GRID - 1), random.randint(0, GRID - 1)
         board[ship_row][ship_col] = 'O'
 
 
@@ -66,30 +70,17 @@ def ships_hit(board):
 
 def generate_comp_shot(board):
     '''create computers shot'''
-    shot_row, shot_col = random.randint(0, 7), random.randint(0, 7)
+    shot_row, shot_col = random.randint(0, GRID - 1), random.randint(0, GRID - 1)
     if board[shot_row][shot_col] == 'O':
         board[shot_row][shot_col] = 'X'
         print('Enemy has hit our ship!!!')
         while board[shot_row][shot_col] == 'X':
-            shot_row, shot_col = random.randint(0, 7), random.randint(0, 7)
+            shot_row, shot_col = random.randint(0, GRID - 1), random.randint(0, GRID - 1)
     elif board[shot_row][shot_col] == ' ':
         board[shot_row][shot_col] = '#'
         print('Enemy has missed!!!')
         while board[shot_row][shot_col] == '#':
-            shot_row, shot_col = random.randint(0, 7), random.randint(0, 7)
-
-
-def get_username():
-    '''ask user for username'''
-    while True:
-        username = input('Enter your name: ')
-        if len(username) > 20:
-            print('Maximum name length is 20 chars')
-        elif username == '':
-            print('Can not be blank!')
-        else:
-            break
-    return username
+            shot_row, shot_col = random.randint(0, GRID - 1), random.randint(0, GRID - 1)
 
 
 def main():
@@ -97,7 +88,8 @@ def main():
     print('=============================================')
     print('WELCOME TO THE CLASSIC GAME OF BATTLESHIPS!!!')
     print('=============================================\n')
-    username = get_username()
+    username = input('Enter your name: ')
+    GRID = input('Enter size of game board 4-8: ')
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
     print(f'\n{username} This is your game board with your fleet of ships')
