@@ -83,35 +83,36 @@ def main():
     print('=============================================')
     print('WELCOME TO THE CLASSIC GAME OF BATTLESHIPS!!!')
     print('=============================================\n')
+    username = input('Enter your name: ')
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
-    print('\nThis is your game board with your fleet of ships')
+    print(f'\n{username} This is your game board with your fleet of ships')
     print(' =================')
     print_board(USER_BOARD)
     print_board(COMP_BOARD)
-    print('\nThis is your enemies board that will mark your shots')
+    print(f'\n{username} This is your enemies board that will mark your shots')
     print(' =================')
     print_board(USER_GUESS_BOARD)
     while True:
         row, col = user_input()
         if COMP_BOARD[row][col] == 'O':
-            print('\nYou have hit an enemy ship!!!')
+            print(f'\n{username}, You have hit an enemy ship!!!')
             USER_GUESS_BOARD[row][col] = 'X'
             COMP_BOARD[row][col] = 'X'
             generate_comp_shot(USER_BOARD)
         elif COMP_BOARD[row][col] == 'X':
-            print('\nYou already have sunk a shit at this location')
+            print(f'\n{username}, You already have sunk a shit at this location')
         elif USER_GUESS_BOARD[row][col] == ' ':
-            print('\nYou missed!!!')
+            print(f'\n{username}  missed!!!')
             generate_comp_shot(USER_BOARD)
             USER_GUESS_BOARD[row][col] = '#'
         elif USER_GUESS_BOARD[row][col] == '#':
-            print('\nShot already has been fired at this location')
+            print(f'\n{username}, Shot already has been fired at this location')
         if ships_hit(USER_GUESS_BOARD) == 5:
-            print('All enemy ships destroyed!!! Congrats!!! You Win!!!')
+            print(f'All enemy ships destroyed!!! Congrats!!! {username}  Win!!!')
             break
         elif ships_hit(USER_BOARD) == 5:
-            print('You Lose!!!')
+            print(f'{username} Lose!!!')
             break
         print('\nThis is your game board with your fleet of ships')
         print(' =================')
