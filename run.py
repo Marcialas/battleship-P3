@@ -100,10 +100,10 @@ def main():
     username = get_username()
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
+    print(f'\nWelcome to the battle {username}!')
     print(f'\n{username} This is your game board with your fleet of ships')
     print(' =================')
     print_board(USER_BOARD)
-    print_board(COMP_BOARD)
     print(f'\n{username} This is your enemies board that will mark your shots')
     print(' =================')
     print_board(USER_GUESS_BOARD)
@@ -126,12 +126,11 @@ def main():
             print(f'All enemy ships destroyed!!! Congrats!!! {username}  Win!!!')
             break
         elif ships_hit(USER_BOARD) == 5:
-            print(f'{username} Lose!!!')
+            print(f'{username} Enemy destroyed all your ships, You Lose!!!')
             break
         print('\nThis is your game board with your fleet of ships')
         print(' =================')
         print_board(USER_BOARD)
-        # print_board(COMP_BOARD)
         print('\nThis is your enemies board that will mark your shots')
         print(' =================')
         print_board(USER_GUESS_BOARD)
