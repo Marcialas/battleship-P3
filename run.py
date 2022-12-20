@@ -101,11 +101,10 @@ def main():
     username = get_username()
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
-    print(f'\nWelcome to the battle {username}!')
-    print('''\n X Marks that ship has been sunk
+    print(f'''\n Welcome to the battle {username}!
+            \n X Marks that ship has been sunk
             \n # Marks that shot has missed it's target
             \n O Marks a ship that has not been sunk yet''')
-  
     print(f'\n{username}, This is your game board with your fleet of ships')
     print(' =================')
     print_board(USER_BOARD)
