@@ -101,10 +101,14 @@ def main():
     place_ships(USER_BOARD)
     place_ships(COMP_BOARD)
     print(f'\nWelcome to the battle {username}!')
-    print(f'\n{username} This is your game board with your fleet of ships')
+    print('''\n X Marks that ship has been sunk
+            \n # Marks that shot has missed it's target
+            \n O Marks a ship that has not been sunk yet''')
+  
+    print(f'\n{username}, This is your game board with your fleet of ships')
     print(' =================')
     print_board(USER_BOARD)
-    print(f'\n{username} This is your enemies board that will mark your shots')
+    print(f'\n{username}, This is your enemies board that will mark your shots')
     print(' =================')
     print_board(USER_GUESS_BOARD)
     while True:
@@ -117,7 +121,7 @@ def main():
         elif COMP_BOARD[row][col] == 'X':
             print(f'\n{username}, You already have sunk a shit at this location')
         elif USER_GUESS_BOARD[row][col] == ' ':
-            print(f'\n{username}  missed!!!')
+            print(f'\n{username}, You missed!!!')
             generate_comp_shot(USER_BOARD)
             USER_GUESS_BOARD[row][col] = '#'
         elif USER_GUESS_BOARD[row][col] == '#':
@@ -126,12 +130,12 @@ def main():
             print(f'All enemy ships destroyed!!! Congrats!!! {username}  Win!!!')
             break
         elif ships_hit(USER_BOARD) == 5:
-            print(f'{username} Enemy destroyed all your ships, You Lose!!!')
+            print(f'{username}, Enemy destroyed all your ships, You Lose!!!')
             break
-        print('\nThis is your game board with your fleet of ships')
+        print(f'\n{username}, This is your game board with your fleet of ships')
         print(' =================')
         print_board(USER_BOARD)
-        print('\nThis is your enemies board that will mark your shots')
+        print(f'\n{username}, This is your enemies board that will mark your shots')
         print(' =================')
         print_board(USER_GUESS_BOARD)
 
