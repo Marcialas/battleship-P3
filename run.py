@@ -1,4 +1,5 @@
-import random
+from random import randint
+
 
 # Game board LEGEND
 # Marks that ship has been hit X
@@ -35,9 +36,9 @@ def print_board(board):
 def place_ships(board):
     '''place ships on the board'''
     for ship in range(5):
-        ship_row, ship_col = random.randint(0, 7), random.randint(0, 7)
+        ship_row, ship_col = randint(0, 7), randint(0, 7)
         while board[ship_row][ship_col] == 'O':
-            ship_row, ship_col = random.randint(0, 7), random.randint(0, 7)
+            ship_row, ship_col = randint(0, 7), randint(0, 7)
         board[ship_row][ship_col] = 'O'
 
 
@@ -66,17 +67,17 @@ def ships_hit(board):
 
 def generate_comp_shot(board):
     '''create computers shot'''
-    shot_row, shot_col = random.randint(0, 7), random.randint(0, 7)
+    shot_row, shot_col = randint(0, 7), randint(0, 7)
     if board[shot_row][shot_col] == 'O':
         board[shot_row][shot_col] = 'X'
         print('Enemy has hit our ship!!!')
         while board[shot_row][shot_col] == 'X':
-            shot_row, shot_col = random.randint(0, 7), random.randint(0, 7)
+            shot_row, shot_col = randint(0, 7), randint(0, 7)
     elif board[shot_row][shot_col] == ' ':
         board[shot_row][shot_col] = '#'
         print('Enemy has missed!!!')
         while board[shot_row][shot_col] == '#':
-            shot_row, shot_col = random.randint(0, 7), random.randint(0, 7)
+            shot_row, shot_col = randint(0, 7), randint(0, 7)
 
 
 def get_username():
