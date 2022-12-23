@@ -104,7 +104,8 @@ def main():
     print(f'''\n Welcome to the battle {username}!
             \n X Marks that ship has been sunk
             \n # Marks that shot has missed it's target
-            \n O Marks a ship that has not been sunk yet''')
+            \n O Marks a ship that has not been sunk yet\n''')
+    input('Press any key to continue')
     print(f'\n{username}, This is your game board with your fleet of ships')
     print(' =================')
     print_board(USER_BOARD)
