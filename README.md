@@ -41,3 +41,16 @@ from empty user input
 ## Bugs
 
 ### Solved Bugs
+* Biggest bug and problem i had to go through this project was, how to handle empty input errors
+    * solution was really simple 
+    ```python
+    while row not in '12345678' or row == ''
+    while col not in 'ABCDEFGH' or col == ''
+    ```
+### Remaining Bugs
+* Not aware of any
+
+
+## Credits
+* Biggest credit goes to [Knowledge Mavens on Youtube](https://www.youtube.com/watch?v=tF1WRCrd_HQ&t=11s)
+His videos really helped me to understand concepts of how to making this game.
