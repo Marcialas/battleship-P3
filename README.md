@@ -3,10 +3,12 @@ The old classic board game of battleship brought back to your screen.<br>
 The game runs in Heroku terminal.<br>
 <br>
 The goal of the game is to sink your opponents ships before they sink yours.<br> 
-<link future link when project is live on heroku>
 
+[Live version of the game](https://battleships-milestoneproject-3.herokuapp.com/)
+
+![start of program](/image/differentdisplaysapi.jpg)
 ## How to play
-The game is based on classic paper-pen game. You can read more about it on <link wikipedia><br>
+The game is based on classic paper-pen game. You can read more about it on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game))<br>
 In my version of the game, at the start user will be asked to enter their username, followed by game rules.<br>
 Computer then randomly place 5 ships on 8x8 board and display the two boards for the player.<br>
 Player will be asked to type in shot row and shot column.<br>
@@ -17,15 +19,18 @@ Winner of the game is who sinks all of opponents ships first.
 * Game board random generated 
     * Players and computers ships are randomly placed at the start of the game.
     * Computers ships are hidden from Player.
+    * Game rules are displayed before game
 
-    Picture of game board
+    ![game rules](/image/gamerules.jpg)
+    ![game board](/image/gameboard.jpg)
 
 * User input validation
     * User input can not be empty
     * User input has to be within range stated
     * Guesses at same location are not valid
 
-    Picture of game board 
+    ![input validation](/image/validinputhandling.jpg)
+
 
 ## Features for future implementation 
 * For player to place ships themselves
